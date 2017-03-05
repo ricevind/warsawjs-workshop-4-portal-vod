@@ -1,24 +1,22 @@
 <div class="album text-muted">
     <div class="container">
-
+      <app-player [video] ="video" *ngIf="video"></app-player>
+        
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="searchFor" name="searchFor">
+        {{ searchFor}}
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
+    </form>
         <div class="row">
-            <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="" alt="Card image cap">
+            <div class="card" style="width: 20rem;" *ngFor="let film of list | async | filterFilm:searchFor">
+                <img routerLink="video/{{film.id}}" class="card-img-top" [src]="film.thumb" alt="Card image cap">
                 <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h4 class="card-title">{{ film.title }}</h4>
+                    <p class="card-text">{{ film.description}}</p>
+                    <a (click)="onVideoClick(film)"  class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
 
     </div>
-</div>
+</div>  
