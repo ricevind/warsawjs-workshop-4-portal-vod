@@ -20,7 +20,8 @@ export class VideoService {
             title: el.snippet.title
         };
         return video;
-      });
+      })
+      .filter(el => el.id);
       return videos;
 
       });

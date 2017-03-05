@@ -13,7 +13,8 @@ export class VideoDetailsComponent implements OnInit {
   private video: Video;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private videoService: VideoService) { }
+              private videoService: VideoService,
+              ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => this.id = params['videoId']);

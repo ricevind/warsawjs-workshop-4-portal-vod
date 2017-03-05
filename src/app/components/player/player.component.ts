@@ -11,10 +11,17 @@ export class PlayerComponent implements OnInit {
   @Input()
   private video: Video;
 
+  @Input()
+  private height: string;
+
+  @Input()
+  private width: string;
+
   constructor() { }
 
   ngOnInit() {
-    console.log('VIDEO z Player', this.video);
+    this.height = this.height || '315';
+    this.width = this.width || '420';
   }
 
 }
